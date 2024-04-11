@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <style>
+        body {
+            background-color: #3498db; /* Blue background color */
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        a {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Todo App</h1>
+        <form action="/add" method="POST">
+            <input type="text" name="todo" placeholder="Enter todo"><br><br>
+            <button type="submit">Add Task</button>
+        </form>
+        <br>
+        <ul>
+            {% for todo in todos %}
+                <li>
+                    {{ todo }}<br>
+                    <a href="/edit/{{ loop.index0 }}">Edit</a>
+                    <a href="/delete/{{ loop.index0 }}">Delete</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
